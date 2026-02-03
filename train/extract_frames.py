@@ -11,6 +11,8 @@ import os
 import random
 from pathlib import Path
 from moviepy.video.io.VideoFileClip import VideoFileClip
+import imageio
+
 
 
 def extract_random_frames(video_path, output_folder, num_frames):
@@ -54,8 +56,6 @@ def extract_random_frames(video_path, output_folder, num_frames):
             frame_filename = f"{video_name}_frame_{idx + 1:03d}.jpg"
             frame_path = os.path.join(output_folder, frame_filename)
             
-            from moviepy.video.io.ffmpeg_tools import write_frames
-            import imageio
             imageio.imwrite(frame_path, frame)
             extracted_count += 1
         except Exception as e:
